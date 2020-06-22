@@ -1,10 +1,8 @@
-﻿#include <fmt/format.h>
-
-static auto repro_name_ = "?";
+﻿#include <boost/filesystem.hpp>
 
 int main() {
-	using namespace std;
-	auto msg = fmt::format("Running repro: {}", repro_name_);
-	printf(msg.c_str());
+	using namespace boost::filesystem;
+	path pth = current_path();
+	printf("Current path: %s", pth.string().c_str());
 	return 0;
 }

@@ -1,5 +1,4 @@
 ﻿{
-  // See https://go.microsoft.com//fwlink//?linkid=834763 for more information about this file.
   "configurations": [
     {
       "name": "x64-Debug",
@@ -10,7 +9,47 @@
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
       "buildCommandArgs": "",
-      "ctestCommandArgs": ""
-    }
+      "ctestCommandArgs": "",
+      "variables": []
+    },
+    {
+      "name": "android-x86",
+      "description": "CMake-native Android build",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "intelliSenseMode": "android-clang-x86",
+      "buildRoot": "${projectDir}/out/build/${name}",
+      "installRoot": "${projectDir}/out/install/${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Android",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_VERSION",
+          "value": "24",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ANDROID_NDK",
+          "value": "${env.ANDROID_NDK_HOME}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ANDROID_ARCH_ABI",
+          "value": "x86",
+          "type": "STRING"
+        },
+        {
+          "name": "VCPKG_TARGET_TRIPLET",
+          "value": "x86-android",
+          "type": "STRING"
+        }
+      ]
+    }  
   ]
 }

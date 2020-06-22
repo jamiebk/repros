@@ -2,7 +2,11 @@
 
 project ("repros")
 
-add_executable (repros "main.cpp")
+if(ANDROID)
+    add_library(repromain SHARED "main.cpp")
+else()
+    add_executable(repromain "main.cpp")
+endif()
 
-find_package(fmt REQUIRED)
-target_link_libraries(repros fmt::fmt)
+find_package(Boost COMPONENTS filesystem REQUIRED)
+target_link_libraries(repromain PUBLIC Boost::filesystem)
