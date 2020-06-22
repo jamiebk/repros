@@ -3,3 +3,6 @@
 project ("repros")
 
 add_executable (repros "main.cpp")
+
+find_package(fmt REQUIRED)
+target_link_libraries(repros fmt::fmt)
