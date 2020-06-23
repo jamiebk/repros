@@ -1,18 +1,6 @@
 ﻿{
   "configurations": [
     {
-      "name": "x64-Debug",
-      "generator": "Ninja",
-      "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "variables": []
-    },
-    {
       "name": "android-x86",
       "description": "CMake-native Android build",
       "generator": "Ninja",
@@ -47,6 +35,96 @@
         {
           "name": "VCPKG_TARGET_TRIPLET",
           "value": "x86-android",
+          "type": "STRING"
+        }
+      ]
+    },  
+    {
+      "name": "android-toolchain",
+      "description": "CMake-native Android build",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "intelliSenseMode": "android-clang-x86",
+      "buildRoot": "${projectDir}/out/build/${name}",
+      "installRoot": "${projectDir}/out/install/${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "cmakeToolchain": "${projectDir}/android.cmake",
+      "variables": [
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Android",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_VERSION",
+          "value": "24",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ANDROID_NDK",
+          "value": "${env.ANDROID_NDK_HOME}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ANDROID_ARCH_ABI",
+          "value": "x86",
+          "type": "STRING"
+        },
+        {
+          "name": "REPRO_TEST_TOOLCHAIN",
+          "value": "TRUE",
+          "type": "BOOL"
+        },
+        {
+          "name": "VCPKG_CXX_FLAGS",
+          "value": "-DEXPECTED_DEFINITION",
+          "type": "STRING"
+        }
+      ]
+    },  
+    {
+      "name": "android-toolchain-modified",
+      "description": "CMake-native Android build",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "intelliSenseMode": "android-clang-x86",
+      "buildRoot": "${projectDir}/out/build/${name}",
+      "installRoot": "${projectDir}/out/install/${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "cmakeToolchain": "${projectDir}/android_modified.cmake",
+      "variables": [
+        {
+          "name": "CMAKE_SYSTEM_NAME",
+          "value": "Android",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_SYSTEM_VERSION",
+          "value": "24",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ANDROID_NDK",
+          "value": "${env.ANDROID_NDK_HOME}",
+          "type": "STRING"
+        },
+        {
+          "name": "CMAKE_ANDROID_ARCH_ABI",
+          "value": "x86",
+          "type": "STRING"
+        },
+        {
+          "name": "REPRO_TEST_TOOLCHAIN",
+          "value": "TRUE",
+          "type": "BOOL"
+        },
+        {
+          "name": "VCPKG_CXX_FLAGS",
+          "value": "-DEXPECTED_DEFINITION",
           "type": "STRING"
         }
       ]
